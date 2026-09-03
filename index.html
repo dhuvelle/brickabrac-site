@@ -283,7 +283,7 @@
 
 
   /* ---------- feature story, wide screens: one sticky phone whose screen follows the text ---------- */
-  .story { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+  .story { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 56px; align-items: start; }
   .story-media { position: sticky; top: 84px; height: calc(100vh - 110px); display: flex; align-items: center; justify-content: center; order: 1; }
   .stage { position: relative; width: 100%; height: min(660px, calc(100vh - 150px)); }
   .stage > .stage-item { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); opacity: 0; transition: opacity 0.4s ease; pointer-events: none; }
@@ -293,7 +293,7 @@
   .stage .device > .vid.active { opacity: 1; }
   .stage .device > .still { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 3; opacity: 0; transition: opacity 0.4s ease; max-width: none; }
   .stage .device > .still.active { opacity: 1; }
-  .stage .screen { width: min(100%, 540px); }
+  .stage .screen { width: min(calc(100% + 64px), 640px); }
   .screen { border-radius: 14px; overflow: hidden; border: 1px solid var(--line); background: #000; box-shadow: 0 18px 40px -22px var(--shadow); }
   .screen video { width: 100%; display: block; }
   .stage .phone-landscape { width: min(100%, 560px); filter: drop-shadow(0 24px 40px var(--shadow)); }
@@ -385,9 +385,7 @@
     <section id="fonctions">
     <div class="wrap">
       <div class="section-head">
-        <p class="label">Fonctionnalités</p>
-        <h2>Ce que l&rsquo;application fait pour toi.</h2>
-        <p>Fais défiler : le téléphone reste en place, et son écran change à chaque étape, dans l&rsquo;ordre où tu les rencontreras.</p>
+        <h2>Fonctionnalités</h2>
       </div>
 
       <div class="story">
@@ -410,43 +408,38 @@
 
         <div class="story-steps">
           <article class="step row-text" data-media="search">
-            <p class="label">Trouver</p>
             <h3>Trouve ton set, et vois tout de suite où tu en es.</h3>
             <p>La recherche couvre près de vingt mille sets officiels, à partir de la base Rebrickable qui est enregistrée sur ton téléphone. Tu tapes quelques lettres du nom ou du numéro, tu ajoutes le set d&rsquo;un geste, et sa fiche s&rsquo;ouvre. Elle affiche la progression, le nombre de pièces déjà retrouvées et celles qui manquent encore, et te mène à la liste complète.</p>
           </article>
 
           <article class="step row-text" data-media="parts">
-            <p class="label">Trier et compléter</p>
             <h3>Coche ce que tu retrouves, puis commande ce qui manque.</h3>
             <p>Pendant le tri, chaque pièce se coche d&rsquo;un simple appui. Quand tu n&rsquo;as retrouvé qu&rsquo;une partie d&rsquo;une quantité, les boutons plus et moins l&rsquo;ajustent, ou tu tapes directement le chiffre au clavier. Un filtre permet de n&rsquo;afficher que ce qui manque encore. Une fois le tri terminé, l&rsquo;export envoie tes pièces manquantes directement sur ton compte Rebrickable : elles arrivent dans ta liste «&nbsp;Lost Parts&nbsp;», rattachées au set, et l&rsquo;application ajoute d&rsquo;elle-même le set à une liste «&nbsp;BrickaBrac&nbsp;» qu&rsquo;elle crée sur ton compte. Pour BrickLink et LEGO Pick-a-Brick, elle prépare un fichier au bon format, que tu importes toi-même sur leur site. L&rsquo;export fait partie de la version Premium ; le suivi des pièces, lui, reste complet en version gratuite.</p>
           </article>
 
           <article class="step row-text" data-media="notice">
-            <div class="row-label"><p class="label">Monter</p><span class="tag tag-new">Nouveau</span></div>
+            <div class="row-label"><span class="tag tag-new">Nouveau</span></div>
             <h3>La notice de montage s&rsquo;ouvre dans l&rsquo;application.</h3>
             <p>Plus besoin de retrouver le livret papier ni de passer par une autre application. BrickaBrac télécharge la notice officielle une seule fois, puis la garde disponible même sans connexion. Tu la feuillettes page par page, tu passes en mode paysage d&rsquo;un appui pour plus de confort, et lorsqu&rsquo;un set compte plusieurs livrets, ils sont tous à portée de main.</p>
           </article>
 
           <article class="step row-text" data-media="import">
-            <div class="row-label"><p class="label">Reprendre</p><span class="tag tag-pro">Premium</span></div>
+            <div class="row-label"><span class="tag tag-pro">Premium</span></div>
             <h3>Tes sets Rebrickable reviennent avec leur progression.</h3>
             <p>Si tu utilises déjà Rebrickable, connecte ton compte et l&rsquo;application retrouve les sets de ta liste BrickaBrac. Elle compare l&rsquo;inventaire de chaque set avec les pièces manquantes que tu as déclarées là-bas, tes Lost&nbsp;Parts, et remet chaque pièce dans le bon état, trouvée ou manquante, sans que tu aies à tout recocher. Par la suite, ce que tu modifies d&rsquo;un côté se retrouve de l&rsquo;autre.</p>
           </article>
 
           <article class="step row-text" data-media="mocdesk">
-            <p class="label">Créer · étape 1, sur Rebrickable</p>
             <h3>Tes propres créations, suivies comme des sets officiels.</h3>
             <p>Un modèle que tu as conçu toi-même n&rsquo;a pas d&rsquo;inventaire officiel, mais il a une liste de pièces, et c&rsquo;est sur le site de Rebrickable que tu la déposes. Depuis la page du MOC, ajoute-le à ta liste de sets BrickaBrac, puis envoie ses pièces dans une liste de pièces qui porte son nom. Ces deux gestes suffisent, l&rsquo;application n&rsquo;a plus qu&rsquo;à les lire. La vidéo montre le parcours depuis un ordinateur, mais il se fait aussi bien depuis le navigateur du téléphone.</p>
           </article>
 
           <article class="step row-text" data-media="mocapp">
-            <p class="label">Créer · étape 2, dans l&rsquo;application</p>
             <h3>Le MOC prend place à côté de tes sets.</h3>
             <p>Une fois la liste de pièces déposée sur Rebrickable, l&rsquo;application la retrouve toute seule. Dans le menu, choisis «&nbsp;Ajouter un MOC&nbsp;», sélectionne le modèle dans ta liste BrickaBrac, associe-lui sa liste de pièces, et il prend place à côté de tes sets, avec la même liste à cocher, la même progression et le même export des pièces manquantes.</p>
           </article>
 
           <article class="step row-text" data-media="child">
-            <p class="label">En famille</p>
             <h3>Un mode enfant pour trier en autonomie.</h3>
             <p>Quand ce sont les enfants qui trient, l&rsquo;interface se simplifie : de grandes cartes, pas de menus, rien qui puisse se dérégler par accident. Et quand la dernière pièce est retrouvée, une petite célébration animée vient récompenser le travail accompli.</p>
           </article>
