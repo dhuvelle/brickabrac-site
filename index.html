@@ -623,6 +623,14 @@
       return Array.prototype.filter.call(root.querySelectorAll('[data-media]'), function (el) { return !el.classList.contains('step'); });
     }
 
+    // a video that has not loaded yet starts as soon as it can, if it is still the one wanted
+    function playWhenReady(v) {
+      if (v.readyState >= 2) { v.play().catch(function () {}); return; }
+      var once = function () { v.removeEventListener('canplay', once); if (v.dataset.media === current) v.play().catch(function () {}); };
+      v.addEventListener('canplay', once);
+      try { v.load(); } catch (e) {}
+    }
+
     function activate(key) {
       current = key;
       var target = mediaFor(key);
@@ -633,7 +641,7 @@
         var on = el === target;
         if (!el.classList.contains('stage-item')) el.classList.toggle('active', on);
         if (el.tagName === 'VIDEO') {
-          if (on && !reduced) { el.play().catch(function () {}); } else { el.pause(); }
+          if (on && !reduced) { playWhenReady(el); } else { el.pause(); }
         }
       });
       steps.forEach(function (s) { s.classList.toggle('is-active', s.dataset.media === key); });
